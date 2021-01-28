@@ -1,0 +1,23 @@
+<div>
+  <h2>Register</h2>
+  <form action="/users/create" method="POST">
+    <label>Name</label>
+    <input type="text" name="name">
+    <label>E-mail</label>
+    <input type="text" name="email">
+    <label>Password</label>
+    <input type="text" name="password">
+    <label>Confirm Password</label>
+    <input type="text" name="passwordConfirm">
+    <input type="submit" value="register">
+  </form>
+  <% if (errorMessages) { %>
+    <ul>
+        <% for (let n in errorMessages) { %>
+        <li>
+            <%= errorMessages[n].msg %>
+        </li>
+        <% } %>
+    </ul>
+  <% } %>
+</div>
