@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 
-let errorMessageParams = ``;
+let errorMessageParams = [];
 
 module.exports = {
   new: (req, res) => {
@@ -8,14 +8,17 @@ module.exports = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      errorMessages: errorMessageParams,
+      errorMessages: errorMessageParams
     });
   },
   create: (req, res, next) => {
     const errors = validationResult(req);
+    errorMessageParams = [];
     if (!errors.isEmpty()) {
       let errorMessages = errors.array();
-      errorMessageParams = errorMessages;
+      for (let i = 0; i < errorMessages.length; i++){
+        errorMessageParams.push(errorMessages[i]);
+      }
       return res.redirect('/users/new');
     }
     return res.render('users/index', {

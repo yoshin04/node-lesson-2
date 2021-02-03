@@ -13,9 +13,9 @@
   </form>
   <% if (errorMessages) { %>
     <ul>
-        <% for (let n in errorMessages) { %>
+        <% for (let i = 0; i < errorMessages.length; i++) { %>
         <li>
-            <%= errorMessages[n].msg %>
+            <%= errorMessages[i].msg %>
         </li>
         <% } %>
     </ul>
