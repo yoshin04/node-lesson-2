@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 
-let errorMessageParams = [];
+const errorMessageParams = [];
 
 module.exports = {
   new: (req, res) => {
